@@ -1,7 +1,8 @@
 import { createClient } from "pexels";
 import { useEffect, useRef, useState } from "react";
 
-const client = createClient("563492ad6f9170000100000113f525316273470d9df782d184f60f54");
+const credential = "563492ad6f9170000100000113f525316273470d9df782d184f60f54";
+const client = createClient(credential);
 
 function App() {
 	const [data, setData] = useState([]);
@@ -25,29 +26,70 @@ function App() {
 		setData(response);
 	};
 
+	const prev = async (url) => {
+		if (url) {
+			let response = await fetch(url, {
+				method: "GET",
+				headers: {
+					Authorization: credential,
+				},
+			});
+			const data = await response.json();
+			setData(data);
+		}
+	};
+
+	const next = async (url) => {
+		if (url) {
+			let response = await fetch(url, {
+				method: "GET",
+				headers: {
+					Authorization: credential,
+				},
+			});
+			console.log(response);
+			const data = await response.json();
+			setData(data);
+		}
+	};
+
 	useEffect(() => {
 		fetchData();
 	}, []);
 
 	return (
 		<div className="container">
-			<div className="head">
+			<div className="header">
 				<h1>Pexels Curated</h1>
 				<input type="text" ref={inputRef} onChange={changehandler} />
 			</div>
+
 			{loading ? (
 				<h1>Loading . . .</h1>
 			) : (
 				<div className="images">
-					{data.photos.map((photo, index) => {
-						return (
-							<a className="image" href={photo.url} key={index}>
-								<img src={photo.src.portrait} alt="pexels" />
-							</a>
-						);
-					})}
+					{data.photos ? (
+						data.photos.map((photo, index) => {
+							return (
+								<a className="image" href={photo.url} key={index}>
+									<img src={photo.src.portrait} alt="pexels" />
+								</a>
+							);
+						})
+					) : (
+						<h1>No Result Found.</h1>
+					)}
 				</div>
 			)}
+
+			<div className="footer">
+				<p onClick={() => prev(data.prev_page)} className={data.prev_page ? "" : "disable"}>
+					&#8612;
+				</p>
+				<p onClick={() => next(data.next_page)} className={data.next_page ? "" : "disable"}>
+					&#8614;
+				</p>
+			</div>
 		</div>
 	);
 }

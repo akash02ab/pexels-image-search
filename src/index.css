@@ -16,14 +16,32 @@
 	gap: 1rem;
 }
 
+.header {
+	width: 100vw;
+	height: 10vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	position: fixed;
+	top: 5%;
+}
+
+input {
+	width: 20rem;
+	height: 2rem;
+	padding: 1rem;
+	outline: 1px solid purple;
+	border: 1px solid violet;
+}
+
 .images {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
-	align-items: center;
 	gap: 4rem;
-	padding: 4rem;
-	margin-top: 6rem;
+	padding: 5rem;
+	margin-top: 10vh;
 }
 
 a {
@@ -39,20 +57,17 @@ img {
 	object-fit: cover;
 }
 
-input {
-	width: 20rem;
-	height: 2rem;
-	padding: 1rem;
-	outline: 1px solid purple;
-	border: 1px solid violet;
+.footer {
+	display: flex;
+	align-items: center;
+	gap: 16rem;
 }
 
-.head {
-	width: 100vw;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1rem;
-	position: fixed;
-	top: 5%;
+.footer p {
+	font-size: 4em;
+	cursor: pointer;
+}
+
+.disable {
+	opacity: 0.25;
 }
