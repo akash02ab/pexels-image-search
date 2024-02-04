@@ -33,6 +33,10 @@ input {
 	padding: 1rem;
 	outline: 1px solid purple;
 	border: 1px solid violet;
+
+	@media screen and (max-width: 640px) {
+		width: 15rem;
+	}
 }
 
 .images {
@@ -42,6 +46,10 @@ input {
 	gap: 4rem;
 	padding: 5rem;
 	margin-top: 10vh;
+
+	@media screen and (max-width: 640px) {
+		padding: 5rem 1rem;
+	}
 }
 
 a {
@@ -49,6 +57,27 @@ a {
 	width: 24rem;
 	background: violet;
 	box-shadow: 0 0 0 8px violet, 0 0 0 16px purple;
+}
+
+@media screen and (max-width: 640px) {
+	a {
+		height: 24rem;
+		width: 20rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	a {
+		height: 20rem;
+		width: 16rem;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	a {
+		height: 18rem;
+		width: 12rem;
+	}
 }
 
 img {
@@ -61,6 +90,24 @@ img {
 	display: flex;
 	align-items: center;
 	gap: 16rem;
+}
+
+@media screen and (max-width: 640px) {
+	.footer {
+		gap: 12rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.footer {
+		gap: 8rem;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.footer {
+		gap: 4rem;
+	}
 }
 
 .footer p {
